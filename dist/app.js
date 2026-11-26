@@ -3,6 +3,7 @@ const data = await fetch('data.json').then(r => { if (!r.ok) throw Error('Indhol
 const profiles = new Map(data.profiles.map(p => [p.key, p]));
 let generationTimer;
 let renderVersion = 0;
+let activeTransition;
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
 function image(asset, alt = '', eager = false) {
   const img = el('img'); img.src = asset.src; img.alt = alt; img.decoding = 'async';
@@ -38,8 +39,9 @@ function players() {
   const page = el('section', 'screen players'); page.append(header());
   page.append(el('h1', '', 'Vælg en spiller'));
   const list = el('nav', 'player-list'); list.setAttribute('aria-label', 'Spillere');
-  for (const p of data.profiles) {
+  for (const [index, p] of data.profiles.entries()) {
     const button = el('button', 'pill player', p.player);
+    button.style.setProperty('--entry-delay', `${index * 35}ms`);
     button.addEventListener('click', () => navigate(`#/former/${p.key}`)); list.append(button);
   } page.append(list); return page;
 }
@@ -82,14 +84,25 @@ function render() {
   const path = location.hash.slice(1).split('/').filter(Boolean); const p = profiles.get(path[1]);
   let page;
   const dark = !path.length || path[0] === 'former' && p;
-  document.body.classList.toggle('dark', !!dark);
-  document.querySelector('meta[name="theme-color"]').content = dark ? '#0e0e0e' : '#e6e2dc';
+  const background = dark ? (path[0] === 'former' ? '#00070c' : '#03070a') : '#e6e2dc';
   if (path[0] === 'spillere') page = players();
   else if (path[0] === 'former' && p) page = generating(p);
   else if (path[0] === 'profil' && p) page = profile(p);
   else page = home();
   document.title = path[0] === 'profil' && p ? `${p.name} — Game of Fate` : 'Game of Fate';
-  app.replaceChildren(page); window.scrollTo(0,0);
+  const version = renderVersion;
+  const commit = () => {
+    if (version !== renderVersion) return;
+    document.body.classList.toggle('dark', !!dark);
+    document.body.style.backgroundColor = background;
+    document.querySelector('meta[name="theme-color"]').content = background;
+    app.replaceChildren(page); window.scrollTo(0,0);
+  };
+  activeTransition?.skipTransition();
+  if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    activeTransition = document.startViewTransition(commit);
+    activeTransition.finished.catch(() => {});
+  } else commit();
 }
 window.addEventListener('hashchange', render);
 render();

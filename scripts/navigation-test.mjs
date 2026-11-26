@@ -6,7 +6,7 @@ import vm from 'node:vm';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../dist');
 const data=JSON.parse(readFileSync(resolve(root,'data.json'),'utf8'));
 class Element {
-  constructor(tag){this.tag=tag;this.children=[];this.style={};this.dataset={};this.events={};this.classList={add:()=>{},toggle:()=>{}};}
+  constructor(tag){this.tag=tag;this.children=[];this.style={setProperty:(k,v)=>{this.style[k]=v;}};this.dataset={};this.events={};this.classList={add:()=>{},toggle:()=>{}};}
   append(...nodes){this.children.push(...nodes);}
   replaceChildren(...nodes){this.children=nodes;}
   setAttribute(k,v){this[k]=v;}
@@ -39,3 +39,18 @@ route('#/former/daniel');assert.equal(timers.size,1);route('#/');assert.equal(ti
 assert.ok(app.all('a').some(x=>x.textContent==='Start spillet'));
 route('#/profil/missing');assert.ok(app.all('a').some(x=>x.textContent==='Start spillet'));
 assert.ok(scrolls>=25);console.log('All 8 player journeys, exact 5-second timer, return links, logo links and interrupted reveal passed.');
+// Rapid navigation must not let an older transition replace the current screen.
+const transitions=[];
+context.window.matchMedia=()=>({matches:false});
+context.document.startViewTransition=update=>{
+  const transition={update,skipped:false,skipTransition(){this.skipped=true;},finished:Promise.resolve()};
+  transitions.push(transition);return transition;
+};
+route('#/former/daniel');route('#/spillere');
+assert.equal(transitions[0].skipped,true);
+transitions.forEach(t=>t.update());
+assert.equal(app.all('button').length,8);assert.equal(timers.size,0);
+route('#/');transitions.at(-1).update();assert.equal(body.style.backgroundColor,'#03070a');
+route('#/former/martin');transitions.at(-1).update();assert.equal(body.style.backgroundColor,'#00070c');
+assert.equal([...timers.values()][0].ms,5000);
+console.log('Animated navigation, interrupted transitions and per-screen background colors passed.');
