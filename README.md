@@ -5,7 +5,7 @@ Mobilhjemmeside efter det leverede Figma-design. Ingen installation eller backen
 ## Forløb
 
 - Start → spillervalg.
-- Vælg spiller → cirkelgrafik animerer i 5 sekunder → spillerens profil.
+- Vælg spiller → cirkelgrafik animerer i 2 sekunder → spillerens profil.
 - Profilens bundknap og tilbagepil → spillervalg.
 - Logo → start.
 - Computer viser “Åbn på din mobil”. Mobiloplevelsen vises op til 600 px bredde.
@@ -26,4 +26,4 @@ Figma-kilden er bevaret som indhold; historiske alternativer er fiktion, og teks
 
 ## Kontrolleret
 
-Alle otte spillerforløb, femsekunderstimeren, tilbageknapper, logolinks og afbrudt animation er kontrolleret automatisk. Alle anvendte billedfiler er lokale og kan afkodes. Visuel kontrol i en rigtig browser mangler, fordi forhåndsvisningsmiljøet var utilgængeligt.
+Alle otte spillerforløb, tosekunderstimeren, tilbageknapper, logolinks og afbrudt animation er kontrolleret automatisk. Alle anvendte billedfiler er lokale og kan afkodes. Visuel kontrol i en rigtig browser mangler, fordi forhåndsvisningsmiljøet var utilgængeligt.

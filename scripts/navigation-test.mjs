@@ -28,7 +28,7 @@ route('#/spillere');assert.equal(app.all('button').length,8);
 for(let i=0;i<8;i++){
   route('#/spillere'); app.all('button')[i].events.click(); listeners.hashchange();
   const p=data.profiles[i];assert.equal(location.hash,`#/former/${p.key}`);
-  assert.equal(timers.size,1);const timer=[...timers.values()][0];assert.equal(timer.ms,5000);
+  assert.equal(timers.size,1);const timer=[...timers.values()][0];assert.equal(timer.ms,2000);
   assert.equal(app.all('p')[0].textContent,'Former skæbne');
   timer.fn();listeners.hashchange();assert.equal(location.hash,`#/profil/${p.key}`);
   assert.equal(app.all('h1')[0].textContent,p.name);assert.equal(app.all('dd').length,6);
@@ -39,7 +39,7 @@ for(let i=0;i<8;i++){
 route('#/former/daniel');assert.equal(timers.size,1);route('#/');assert.equal(timers.size,0);
 assert.ok(app.all('a').some(x=>x.textContent==='Start spillet'));
 route('#/profil/missing');assert.ok(app.all('a').some(x=>x.textContent==='Start spillet'));
-assert.ok(scrolls>=25);console.log('All 8 player journeys, exact 5-second timer, return links, logo links and interrupted reveal passed.');
+assert.ok(scrolls>=25);console.log('All 8 player journeys, exact 2-second timer, return links, logo links and interrupted reveal passed.');
 // Exercise the real transition path with delayed image decoding and rapid navigation.
 const animations=[];
 context.window.matchMedia=()=>({matches:false});
@@ -69,7 +69,7 @@ assert.ok(app.children.at(-1).all('a').some(x=>x.textContent==='Start spillet'))
 route('#/former/martin');await flush();
 assert.equal(app.children.length,2,'Interrupted transitions must keep at most two screens');
 assert.equal(body.style.backgroundColor,'#00070c');
-assert.equal([...timers.values()][0].ms,5000);
+assert.equal([...timers.values()][0].ms,2000);
 assert.equal(animations.at(-2).canceled,true);
 animations.at(-1).complete();await flush();assert.equal(app.children.length,1);
 assert.equal(app.all('p')[0].textContent,'Former skæbne');

@@ -53,7 +53,7 @@ function generating(p) {
   const circle = image(data.loading, '', true); circle.className = 'orbit';
   const label = el('p', '', 'Former skæbne'); label.setAttribute('role', 'status');
   page.append(circle, label);
-  // Start loading the selected portrait while the five-second reveal runs.
+  // Start loading the selected portrait while the two-second reveal runs.
   const preload = new Image(); preload.src = p.portrait.src;
   return page;
 }
@@ -130,7 +130,7 @@ function render() {
     if (loading) {
       generationTimer = setTimeout(() => {
         if (version === renderVersion) location.replace(`#/profil/${p.key}`);
-      }, 5000);
+      }, 2000);
     }
   };
   if (pendingImages.length) Promise.all(pendingImages).then(commit);
