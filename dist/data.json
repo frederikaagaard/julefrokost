@@ -26,15 +26,15 @@
         "height": 20.0
       },
       "portrait": {
-        "src": "assets/5fa6ffc1f81018a6.png",
+        "src": "assets/kaspar-portrait-v2.png",
         "crop": {
           "width": "100%",
           "height": "100%",
           "objectFit": "cover"
         },
-        "id": "1577:1074",
+        "id": "1593:1468",
         "width": 384,
-        "height": 481
+        "height": 477
       },
       "gallery": [
         {
@@ -151,16 +151,17 @@
       },
       "gallery": [
         {
-          "kind": "image",
-          "y": 1761.0,
-          "src": "assets/529a407cd0eb3554.png",
+          "src": "assets/cristobal-harbour-v2.png",
           "crop": {
             "width": "100%",
-            "height": "100%"
+            "height": "100%",
+            "objectFit": "cover"
           },
-          "id": "1577:1119",
-          "width": 384.0,
-          "height": 312.0
+          "id": "1594:1527",
+          "width": 384,
+          "height": 312,
+          "kind": "image",
+          "y": 1761
         },
         {
           "kind": "image",
@@ -208,16 +209,17 @@
           "text": "De 3 x-Koner: Marta, Silvia og Graciela"
         },
         {
-          "kind": "image",
-          "y": 3284.0,
-          "src": "assets/220c23dbb35773d8.png",
+          "src": "assets/cristobal-office-v2.png",
           "crop": {
             "width": "100%",
-            "height": "100%"
+            "height": "100%",
+            "objectFit": "cover"
           },
-          "id": "1577:1122",
-          "width": 384.0,
-          "height": 332.0
+          "id": "1594:1536",
+          "width": 384,
+          "height": 332,
+          "kind": "image",
+          "y": 3284
         }
       ]
     },
@@ -338,7 +340,7 @@
       "key": "benjamin",
       "player": "Benjamin Buschard",
       "frame": "1577:1191",
-      "name": "{`Benedikt Buchard `}",
+      "name": "Benedikt Buchard",
       "story": "Benedikt »Benny« Buchard er Østrigs nye schlagerstjerne i 1987. En lovende skiløber fra Tyrol, der aldrig når med til vinter-OL i Innsbruck i 1976, men finder sit publikum med en mikrofon i hånden. Nu synger han om alperne, hjemstavnen og den eneste ene på tysk og østrigsk fjernsyn. Når Benny skal på turné, overlader han repertoiret til kapelmesteren, men insisterer selv på storbarmede danserinder og korpiger. Mellem turnéerne lever han tilbagetrukket ved Ellmau i sine elskede alper, hvor han vandrer ad de samme ruter, som hans far lærte ham. Han interesserer sig især for bjergbestigningens dødsulykker og kan fra sin terrasse udpege præcis, hvor folk er styrtet ned på Ellmauer Halt. Han har endnu ikke selv forsøgt at tæmme bjerget, men er overbevist om, at det en dag bliver hans skæbne.",
       "facts": [
         "Østrig",
@@ -603,15 +605,15 @@
         "height": 20.0
       },
       "portrait": {
-        "src": "assets/73d0ef70a02b9fd5.png",
+        "src": "assets/fei-portrait-v2.png",
         "crop": {
           "width": "100%",
           "height": "100%",
           "objectFit": "cover"
         },
-        "id": "1577:1274",
+        "id": "1593:1471",
         "width": 384,
-        "height": 481
+        "height": 482
       },
       "gallery": [
         {
@@ -969,25 +971,25 @@
     "height": 25.526
   },
   "homeImage": {
-    "src": "assets/abec1a36ba8e3dd8.png",
+    "src": "assets/home-butterfly-v2.png",
     "crop": {
       "width": "100%",
       "height": "100%",
       "objectFit": "cover"
     },
-    "id": "1577:985",
-    "width": 775.0,
-    "height": 517.0
+    "id": "1594:1498",
+    "width": 400,
+    "height": 517
   },
   "loading": {
-    "src": "assets/6c545777e3384462.png",
+    "src": "assets/loading-ring-v2.png",
     "crop": {
       "width": "100%",
       "height": "100%",
       "objectFit": "cover"
     },
-    "id": "1577:1004",
-    "width": 303.0,
-    "height": 227.0
+    "id": "1594:1507",
+    "width": 227,
+    "height": 227
   }
 }
