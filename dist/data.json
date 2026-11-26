@@ -1,0 +1,993 @@
+{
+  "profiles": [
+    {
+      "key": "casper",
+      "player": "Casper Hald",
+      "frame": "1577:1038",
+      "name": "Kaspar Hald",
+      "story": "Kaspar Hald er ingeniøren bag Haldcore, verdens største virtuelle pornoapp, hvor brugerne møder personlige seksualpartnere og kærester gennem chat og VR. Han begynder udviklingen i 2011 og skaber undervejs den første moderne store sprogmodel. Teknologien sætter AI-revolutionen i gang, og i 2021 er han en af verdens rigeste mænd og en feteret techstifter. Han lever efter succesen i en penthouse i Berlin med privat chauffør og modtager investorer i silkekåbe. Alligevel besvarer han selv kundeklager og kan stadig ikke slippe den ene bruger, der gav appen én stjerne i forretningens spæde start.",
+      "facts": [
+        "Tyskland",
+        "Berlin",
+        "2021",
+        "43 år",
+        "Software udvikler",
+        "Single"
+      ],
+      "flag": {
+        "src": "assets/b68e4ba68840e250.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1043",
+        "width": 33.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/5fa6ffc1f81018a6.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1074",
+        "width": 384,
+        "height": 481
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1645.0,
+          "src": "assets/e1206aaa13affe14.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1063",
+          "width": 384.0,
+          "height": 480.0
+        },
+        {
+          "kind": "image",
+          "y": 2133.0,
+          "src": "assets/b440bc4c18bb5771.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1064",
+          "width": 384.0,
+          "height": 256.0
+        },
+        {
+          "kind": "caption",
+          "y": 2397.0,
+          "text": "Kaspars Penthouse i Berlin"
+        },
+        {
+          "kind": "brand",
+          "y": 2428.0,
+          "image": {
+            "src": "assets/db21ccb246fe7c9d.png",
+            "crop": {
+              "width": "100%",
+              "height": "100%",
+              "objectFit": "cover"
+            },
+            "id": "1577:1069",
+            "width": 384.0,
+            "height": 451.391
+          },
+          "height": 451.391
+        },
+        {
+          "kind": "image",
+          "y": 2888.0,
+          "src": "assets/ad5f009ab296b396.png",
+          "crop": {
+            "height": "100%",
+            "left": "0",
+            "top": "0",
+            "width": "108.47%"
+          },
+          "id": "1577:1072",
+          "width": 384.0,
+          "height": 278.0
+        },
+        {
+          "kind": "image",
+          "y": 3174.0,
+          "src": "assets/d46751f072434b74.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1073",
+          "width": 384.0,
+          "height": 576.0
+        }
+      ]
+    },
+    {
+      "key": "kristoffer",
+      "player": "Kristoffer Graae",
+      "frame": "1577:1092",
+      "name": "Cristóbal Grau",
+      "story": "Cristóbal Grau er fagforeningsleder for Buenos Aires’ havnearbejdere. En begavet lærersøn, der forlader universitetet for arbejderbevægelsen. Han kan gennemskue en overenskomst, før arbejdsgivernes advokater har fundet deres pladser. Hans strejker sikrer tusindvis af familier bedre vilkår, men selv afslår han en politisk karriere. Som 45-årig har han tre forliste ægteskaber, fire børn og problemer med potensen. Han drikker hver dag og bor hos sin mor, hvor han stadig drømmer om revolutionen, der aldrig kom, indtil han falder beruset i søvn på sofaen. Hans eneste tilbageværende glæde er at stå på lægterne på Boca Juniors’ stadion og råbe »Dale, Boca!«. Hans mor vasker stadig hans trøje, men nægter at diskutere kapitalismen.",
+      "facts": [
+        "Argentina",
+        "Buenos Aires",
+        "1987",
+        "45 år",
+        "Fagforeningsleder",
+        "Single, 4 børn"
+      ],
+      "flag": {
+        "src": "assets/5dfe2b16404e0cf0.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1097",
+        "width": 32.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/aa32e5a0d8611979.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1118",
+        "width": 384.0,
+        "height": 481.0
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1761.0,
+          "src": "assets/529a407cd0eb3554.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%"
+          },
+          "id": "1577:1119",
+          "width": 384.0,
+          "height": 312.0
+        },
+        {
+          "kind": "image",
+          "y": 2081.0,
+          "src": "assets/93b634d5c51c6892.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1120",
+          "width": 384.0,
+          "height": 371.0
+        },
+        {
+          "kind": "image",
+          "y": 2460.0,
+          "src": "assets/46315b7c0000f711.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1121",
+          "width": 384.0,
+          "height": 481.0
+        },
+        {
+          "kind": "image",
+          "y": 2949.0,
+          "src": "assets/c41f088063cf6b36.png",
+          "crop": {
+            "height": "100%",
+            "left": "-8.13%",
+            "top": "0",
+            "width": "115.66%"
+          },
+          "id": "1577:1123",
+          "width": 384.0,
+          "height": 296.0
+        },
+        {
+          "kind": "caption",
+          "y": 3253.0,
+          "text": "De 3 x-Koner: Marta, Silvia og Graciela"
+        },
+        {
+          "kind": "image",
+          "y": 3284.0,
+          "src": "assets/220c23dbb35773d8.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%"
+          },
+          "id": "1577:1122",
+          "width": 384.0,
+          "height": 332.0
+        }
+      ]
+    },
+    {
+      "key": "frederik",
+      "player": "Frederik Aagaard",
+      "frame": "1577:1142",
+      "name": "Fumihiro Arakawa",
+      "story": "Fumihiro Arakawa bliver i 1995 den første japanskfødte spiller i NBA og et nationalt fænomen. Hjemme i Japan står børn tidligt op for at se ham spille få minutter og sjældent score. Spiller mod Michael Jordan, får reklamekontrakter og er i sin tid i NBA meget optaget af, hvordan man kan forbedre reglerne i spillet. Talentet rækker dog kun til tre sæsoner. I 1998 vender han hjem som 28-årig. Ti år senere gør han offentlige toiletter rene i Tokyo. Han bor alene, passer sine planter og lever et roligt liv. Han spiller stadig basketball i parken hver morgen, hvor de andre efterhånden har lært at holde fast i de officielle regler.",
+      "facts": [
+        "Japan",
+        "Tokyo",
+        "2008",
+        "43 år",
+        "Rengøringsassistent",
+        "Single"
+      ],
+      "flag": {
+        "src": "assets/f267c23cd908f8c0.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1147",
+        "width": 30.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/5a40496a966dbf28.png",
+        "crop": {
+          "height": "106.44%",
+          "left": "0",
+          "top": "0",
+          "width": "100%"
+        },
+        "id": "1577:1168",
+        "width": 384.0,
+        "height": 481.0
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1649.0,
+          "src": "assets/b7f9997984bb041c.png",
+          "crop": {
+            "height": "100%",
+            "left": "-5.06%",
+            "top": "0",
+            "width": "123.47%"
+          },
+          "id": "1577:1169",
+          "width": 384.0,
+          "height": 317.0
+        },
+        {
+          "kind": "image",
+          "y": 1974.0,
+          "src": "assets/e762f4e4829bba99.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1170",
+          "width": 384.0,
+          "height": 482.0
+        },
+        {
+          "kind": "caption",
+          "y": 2464.0,
+          "text": "Fumihiro Arakawa OG Michael Jordan, 1996."
+        },
+        {
+          "kind": "image",
+          "y": 2495.0,
+          "src": "assets/2e1207d133608ddf.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1171",
+          "width": 384,
+          "height": 481
+        },
+        {
+          "kind": "image",
+          "y": 2887.0,
+          "src": "assets/e0b4f65e23590600.png",
+          "crop": {
+            "height": "100%",
+            "left": "-43.43%",
+            "top": "0",
+            "width": "176.69%"
+          },
+          "id": "1577:1172",
+          "width": 384.0,
+          "height": 358.0
+        },
+        {
+          "kind": "image",
+          "y": 3253.0,
+          "src": "assets/220f8c5923bbfda9.png",
+          "crop": {
+            "height": "100%",
+            "left": "-36.02%",
+            "top": "0",
+            "width": "157.56%"
+          },
+          "id": "1577:1173",
+          "width": 384.0,
+          "height": 454.0
+        }
+      ]
+    },
+    {
+      "key": "benjamin",
+      "player": "Benjamin Buschard",
+      "frame": "1577:1191",
+      "name": "{`Benedikt Buchard `}",
+      "story": "Benedikt »Benny« Buchard er Østrigs nye schlagerstjerne i 1987. En lovende skiløber fra Tyrol, der aldrig når med til vinter-OL i Innsbruck i 1976, men finder sit publikum med en mikrofon i hånden. Nu synger han om alperne, hjemstavnen og den eneste ene på tysk og østrigsk fjernsyn. Når Benny skal på turné, overlader han repertoiret til kapelmesteren, men insisterer selv på storbarmede danserinder og korpiger. Mellem turnéerne lever han tilbagetrukket ved Ellmau i sine elskede alper, hvor han vandrer ad de samme ruter, som hans far lærte ham. Han interesserer sig især for bjergbestigningens dødsulykker og kan fra sin terrasse udpege præcis, hvor folk er styrtet ned på Ellmauer Halt. Han har endnu ikke selv forsøgt at tæmme bjerget, men er overbevist om, at det en dag bliver hans skæbne.",
+      "facts": [
+        "Østrig",
+        "Ellmau, Tyrol",
+        "1989",
+        "41 år",
+        "Schlagersanger",
+        "Gift, 7 børn"
+      ],
+      "flag": {
+        "src": "assets/20720b73560313a4.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1196",
+        "width": 30.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/cb8eda6b6f283532.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1217",
+        "width": 384.0,
+        "height": 480.0
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1789.0,
+          "src": "assets/8d2784a7cc2d7c38.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1218",
+          "width": 384.0,
+          "height": 288.0
+        },
+        {
+          "kind": "image",
+          "y": 2085.0,
+          "src": "assets/a7a613fc1cf0dae4.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1219",
+          "width": 384,
+          "height": 481
+        },
+        {
+          "kind": "image",
+          "y": 2477.0,
+          "src": "assets/b8879d3c83b1b643.png",
+          "crop": {
+            "height": "111.91%",
+            "left": "0",
+            "top": "-0.05%",
+            "width": "100%"
+          },
+          "id": "1577:1221",
+          "width": 384.0,
+          "height": 474.0
+        },
+        {
+          "kind": "image",
+          "y": 2959.0,
+          "src": "assets/3b97d3d3ad74c062.png",
+          "crop": {
+            "height": "108.69%",
+            "left": "-0.03%",
+            "top": "0",
+            "width": "100.06%"
+          },
+          "id": "1577:1222",
+          "width": 384.0,
+          "height": 518.0
+        },
+        {
+          "kind": "caption",
+          "y": 3485.0,
+          "text": "VM i alpint skiløb i St. Moritz i 1974"
+        },
+        {
+          "kind": "image",
+          "y": 3516.0,
+          "src": "assets/d939328fe07b9d59.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1220",
+          "width": 384.0,
+          "height": 459.0
+        },
+        {
+          "kind": "image",
+          "y": 3983.0,
+          "src": "assets/325ec604c36e4162.png",
+          "crop": {
+            "height": "177.94%",
+            "left": "-7.36%",
+            "top": "-7.63%",
+            "width": "117.61%"
+          },
+          "id": "1577:1223",
+          "width": 384.0,
+          "height": 382.0
+        },
+        {
+          "kind": "caption",
+          "y": 4373.0,
+          "text": "Bennys hustru hjemme i Tyrol, 1986"
+        }
+      ]
+    },
+    {
+      "key": "martin",
+      "player": "Martin Richter Jensen",
+      "frame": "1577:1392",
+      "name": "Martyn Rikhterov",
+      "story": "Martin er Sovjetunionens mest begavede atomfysiker og en mand, der har lettere ved ligninger end ved mennesker. Han kommer fra beskedne kår, men hans talent fører ham til et hemmeligt forskningsanlæg. I 1944 giver hans beregninger Sovjetunionen atombomben før amerikanerne. Året efter bliver Berlin udslettet, og Europa formes af en sovjetisk sejr. Martin bliver nationalhelt, får en datja og gifter sig med en servitrice, der aldrig siger et ord. Han ved stadig ikke, om hun kender til hans bedrifter eller tror på dem. På hans gravsted skal der stå: «Слава Сталину!» – udtales (Slava Stalinu!)",
+      "facts": [
+        "Sovjetunionen",
+        "Moskva",
+        "1952",
+        "54 år",
+        "Atomfysiker",
+        "Gift"
+      ],
+      "flag": {
+        "src": "assets/aa3316f65ad657e9.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1397",
+        "width": 40.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/d1c75b163f983043.png",
+        "crop": {
+          "height": "106.22%",
+          "left": "0",
+          "top": "0",
+          "width": "100%"
+        },
+        "id": "1577:1418",
+        "width": 384.0,
+        "height": 481.0
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1649.0,
+          "src": "assets/e5bd4e00fc3e3e19.png",
+          "crop": {
+            "height": "100%",
+            "left": "-15.32%",
+            "top": "0",
+            "width": "115.32%"
+          },
+          "id": "1577:1419",
+          "width": 384.0,
+          "height": 443.0
+        },
+        {
+          "kind": "image",
+          "y": 2100.0,
+          "src": "assets/7178010b911d6481.png",
+          "crop": {
+            "height": "100%",
+            "left": "-3.99%",
+            "top": "0",
+            "width": "107.49%"
+          },
+          "id": "1577:1420",
+          "width": 384.0,
+          "height": 275.0
+        },
+        {
+          "kind": "caption",
+          "y": 2383.0,
+          "text": "Martyn har ventet længe på sin goulash"
+        },
+        {
+          "kind": "image",
+          "y": 2414.0,
+          "src": "assets/c614033830a25bb5.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1421",
+          "width": 384.0,
+          "height": 512.0
+        },
+        {
+          "kind": "image",
+          "y": 2934.0,
+          "src": "assets/0bee048903881d6e.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1422",
+          "width": 384.0,
+          "height": 480.0
+        },
+        {
+          "kind": "image",
+          "y": 3422.0,
+          "src": "assets/e13e9e2d296a9056.png",
+          "crop": {
+            "height": "100.08%",
+            "left": "0",
+            "top": "-0.04%",
+            "width": "113.8%"
+          },
+          "id": "1577:1423",
+          "width": 384.0,
+          "height": 655.0
+        }
+      ]
+    },
+    {
+      "key": "felding",
+      "player": "Frederik Felding",
+      "frame": "1577:1241",
+      "name": "Fei Ding",
+      "story": "Fei Ding er arving til et af Kinas største ejendomsimperier. Hans far bygger hoteller i frobindelse med OL i Beijing i 2008 og har forbindelser overalt. Fei er opdraget til at overtage det hele, men interesserer sig mere for gæsterne velvære end for regnskaberne. Han husker chaufførernes fødselsdage og fortæller vittigheder, som får tolken til at tøve. Hans eneste selvstændige byggeprojekt er en erotisk natklub, der aldrig har givet overskud. Familien præsenterer ham jævnligt for døtre fra de rigtige kredse. Han bliver gode venner med dem alle. I Shanghai deler han en stor lejlighed med sin personlige træner, der også ledsager ham på forretningsrejser. Hans far betaler insisterende stadig for to hotelværelser og hans mor nævner aldrig trænerens navn.",
+      "facts": [
+        "Kina",
+        "Shanghai",
+        "2012",
+        "34 år",
+        "Arving",
+        "Single"
+      ],
+      "flag": {
+        "src": "assets/ce9044f25c1e0a44.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1246",
+        "width": 30.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/73d0ef70a02b9fd5.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1274",
+        "width": 384,
+        "height": 481
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1789.0,
+          "src": "assets/c6b6ce91f6e22e62.png",
+          "crop": {
+            "height": "132.53%",
+            "left": "0",
+            "top": "0",
+            "width": "100%"
+          },
+          "id": "1577:1268",
+          "width": 384.0,
+          "height": 435.0
+        },
+        {
+          "kind": "image",
+          "y": 2232.0,
+          "src": "assets/38b967e9602d6ca4.png",
+          "crop": {
+            "height": "103.5%",
+            "left": "0",
+            "top": "0",
+            "width": "100%"
+          },
+          "id": "1577:1269",
+          "width": 384.0,
+          "height": 557.0
+        },
+        {
+          "kind": "image",
+          "y": 2797.0,
+          "src": "assets/bd85a12b704dd3c4.png",
+          "crop": {
+            "height": "117.31%",
+            "left": "0",
+            "top": "0",
+            "width": "100%"
+          },
+          "id": "1577:1267",
+          "width": 384.0,
+          "height": 491.0
+        },
+        {
+          "kind": "image",
+          "y": 3296.0,
+          "src": "assets/a72321979dbd6c15.png",
+          "crop": {
+            "height": "100%",
+            "left": "-17.26%",
+            "top": "0",
+            "width": "133.22%"
+          },
+          "id": "1577:1270",
+          "width": 384.0,
+          "height": 341.0
+        },
+        {
+          "kind": "image",
+          "y": 3645.0,
+          "src": "assets/32389bf69aecdfba.png",
+          "crop": {
+            "height": "112.5%",
+            "left": "0",
+            "top": "-0.98%",
+            "width": "100%"
+          },
+          "id": "1577:1271",
+          "width": 384.0,
+          "height": 512.0
+        }
+      ]
+    },
+    {
+      "key": "thomas",
+      "player": "Thomas Schjødt",
+      "frame": "1577:1292",
+      "name": "Tommy Schott",
+      "story": "Thomas »Tommy« Schott er retshjælpsadvokat fra en jødisk familie i New York. I 1960 udfordrer han Kennedy om Demokraternes nominering og vinder mod alle forventninger. Sejren baner vejen for et opgør med Nixon, som han besejrer og bliver USA’s første jødiske præsident. Han holder USA ude af Vietnam, gør ende på raceadskillelsen i landets skoler og offentlige rum og sender i 1966 en amerikaner og en russer sammen på Månen. Under valgkampen kalder Nixon ham hånligt »Shorty«. Tommy svarer med sloganet »Shorty for President«, hvilket ofte fremhæves som dét, der vendte valget til hans fordel.",
+      "facts": [
+        "USA",
+        "Washington, D.C.",
+        "1966",
+        "46 år",
+        "Præsident",
+        "Gift, 3 børn"
+      ],
+      "flag": {
+        "src": "assets/0b991b4757369c5a.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1297",
+        "width": 38.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/29bae35c85562b7f.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1320",
+        "width": 384.0,
+        "height": 481.0
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1677.0,
+          "src": "assets/46427f01c0386443.png",
+          "crop": {
+            "width": "100%",
+            "height": "100%",
+            "objectFit": "cover"
+          },
+          "id": "1577:1321",
+          "width": 384.0,
+          "height": 576.0
+        },
+        {
+          "kind": "image",
+          "y": 2261.0,
+          "src": "assets/81bcd2605e40e637.png",
+          "crop": {
+            "height": "100%",
+            "left": "-18.21%",
+            "top": "0",
+            "width": "131.96%"
+          },
+          "id": "1577:1322",
+          "width": 384.0,
+          "height": 338.0
+        },
+        {
+          "kind": "image",
+          "y": 2598.0,
+          "src": "assets/546be04a406cec63.png",
+          "crop": {
+            "height": "100%",
+            "left": "0",
+            "top": "0",
+            "width": "106.74%"
+          },
+          "id": "1577:1323",
+          "width": 384.0,
+          "height": 273.0
+        },
+        {
+          "kind": "image",
+          "y": 2879.0,
+          "src": "assets/b4ea5e41436a0b19.png",
+          "crop": {
+            "height": "100%",
+            "left": "0",
+            "top": "0",
+            "width": "117.88%"
+          },
+          "id": "1577:1324",
+          "width": 384.0,
+          "height": 302.0
+        },
+        {
+          "kind": "caption",
+          "y": 3189.0,
+          "text": "Tommy og Khrusjtjov under månelandingen, 1966."
+        },
+        {
+          "kind": "image",
+          "y": 3220.0,
+          "src": "assets/32d2760fdd3815ae.png",
+          "crop": {
+            "height": "100%",
+            "left": "-49.37%",
+            "top": "0",
+            "width": "160.76%"
+          },
+          "id": "1577:1325",
+          "width": 384.0,
+          "height": 444.0
+        },
+        {
+          "kind": "image",
+          "y": 3672.0,
+          "src": "assets/b87102e0ac487785.png",
+          "crop": {
+            "height": "100%",
+            "left": "-47.55%",
+            "top": "0",
+            "width": "179.02%"
+          },
+          "id": "1577:1326",
+          "width": 384.0,
+          "height": 458.0
+        }
+      ]
+    },
+    {
+      "key": "daniel",
+      "player": "Daniel Tufte Kristensen",
+      "frame": "1577:1342",
+      "name": "Daniele Tufetti",
+      "story": "Daniele Tufetti er et matematisk talent i en verden, der ikke længere har brug for det. Efter tredje verdenskrig overtager robotterne. AI har fundet én model for menneskehedens overlevelse: Menneskene må ikke længere bestemme selv. Verden styres fra hovedsædet over det jævnede Vatikan. Kun obelisken står tilbage som minde om menneskenes fejlagtige overbevisninger. Verdensborgerne lever isoleret på borgerløn med yoga, meditation, kunst og med faste besøgstider i menneskeparkerne. Sex er forbudt. Gemt i en vasketøjsvogn opdager Daniele Roms undergrund af hazardspil, druk og hor. Snart lever han kun for nætterne i kloakkerne, men må hjem før morgenkontrollen. En nat farer han vild og kommer aldrig tilbage. Systemet registrerer endnu et menneske, der ikke kunne håndtere sin egen frihed.",
+      "facts": [
+        "Italiensk",
+        "Rom",
+        "2143",
+        "39 år",
+        "Fredet",
+        "Uparret"
+      ],
+      "flag": {
+        "src": "assets/b7583f6a7507812d.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1347",
+        "width": 30.0,
+        "height": 20.0
+      },
+      "portrait": {
+        "src": "assets/51e93b5169e88cc2.png",
+        "crop": {
+          "width": "100%",
+          "height": "100%",
+          "objectFit": "cover"
+        },
+        "id": "1577:1446",
+        "width": 384,
+        "height": 481
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "y": 1817.0,
+          "src": "assets/a8c9d6798bbf8bf7.png",
+          "crop": {
+            "height": "100%",
+            "left": "-61.06%",
+            "top": "0",
+            "width": "162.13%"
+          },
+          "id": "1577:1369",
+          "width": 384.0,
+          "height": 350.0
+        },
+        {
+          "kind": "image",
+          "y": 2175.0,
+          "src": "assets/9c351b1052bcccbe.png",
+          "crop": {
+            "height": "100%",
+            "left": "-36.42%",
+            "top": "0",
+            "width": "172.02%"
+          },
+          "id": "1577:1370",
+          "width": 384.0,
+          "height": 372.0
+        },
+        {
+          "kind": "caption",
+          "y": 2555.0,
+          "text": "Vatikanet, 2143."
+        },
+        {
+          "kind": "image",
+          "y": 2586.0,
+          "src": "assets/056c68d8ad876d84.png",
+          "crop": {
+            "height": "184.84%",
+            "left": "-24.04%",
+            "top": "-65.7%",
+            "width": "179.65%"
+          },
+          "id": "1577:1371",
+          "width": 384.0,
+          "height": 560.0
+        },
+        {
+          "kind": "image",
+          "y": 3154.0,
+          "src": "assets/fea85c8304ddc701.png",
+          "crop": {
+            "height": "100%",
+            "left": "-22.47%",
+            "top": "0",
+            "width": "146.86%"
+          },
+          "id": "1577:1372",
+          "width": 384.0,
+          "height": 376.0
+        },
+        {
+          "kind": "caption",
+          "y": 3538.0,
+          "text": "Daniele, Seksuelt frustreret."
+        },
+        {
+          "kind": "image",
+          "y": 3569.0,
+          "src": "assets/8e73ca3e14df1a9a.png",
+          "crop": {
+            "height": "100%",
+            "left": "-107.55%",
+            "top": "0",
+            "width": "229.67%"
+          },
+          "id": "1577:1368",
+          "width": 384.0,
+          "height": 496.0
+        },
+        {
+          "kind": "image",
+          "y": 4073.0,
+          "src": "assets/bbd49000b68e0656.png",
+          "crop": {
+            "height": "135.21%",
+            "left": "0",
+            "top": "-10.12%",
+            "width": "100%"
+          },
+          "id": "1577:1374",
+          "width": 384.0,
+          "height": 426.0
+        }
+      ]
+    }
+  ],
+  "back": "assets/301cb29378e3e88f.svg",
+  "logo": {
+    "src": "assets/2b90f964111f2aef.svg",
+    "crop": {
+      "width": "100%",
+      "height": "100%"
+    },
+    "id": "1577:1023",
+    "width": 105.602,
+    "height": 20.0
+  },
+  "homeLogo": {
+    "src": "assets/e4923bb2bd00c3b7.svg",
+    "crop": {
+      "width": "100%",
+      "height": "100%"
+    },
+    "id": "1577:988",
+    "width": 134.782,
+    "height": 25.526
+  },
+  "homeImage": {
+    "src": "assets/abec1a36ba8e3dd8.png",
+    "crop": {
+      "width": "100%",
+      "height": "100%",
+      "objectFit": "cover"
+    },
+    "id": "1577:985",
+    "width": 775.0,
+    "height": 517.0
+  },
+  "loading": {
+    "src": "assets/6c545777e3384462.png",
+    "crop": {
+      "width": "100%",
+      "height": "100%",
+      "objectFit": "cover"
+    },
+    "id": "1577:1004",
+    "width": 303.0,
+    "height": 227.0
+  }
+}

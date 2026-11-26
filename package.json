@@ -1,0 +1,10 @@
+{
+  "name": "game-of-fate",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 3000 --directory dist",
+    "build": "node scripts/check.mjs",
+    "test": "node scripts/check.mjs && node scripts/navigation-test.mjs"
+  }
+}
