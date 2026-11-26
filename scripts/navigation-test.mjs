@@ -55,7 +55,7 @@ route('#/spillere');
 assert.equal(app.children.length,2);
 assert.equal(app.children[0].style.top,'-640px');
 assert.deepEqual(JSON.parse(JSON.stringify(animations.at(-1).keyframes)),[{opacity:0},{opacity:1}]);
-assert.equal(animations.at(-1).options.duration,240);
+assert.equal(animations.at(-1).options.duration,300);
 animations.at(-1).complete();await flush();assert.equal(app.children.length,1);
 let release;
 const gate=new Promise(resolve=>{release=resolve;});

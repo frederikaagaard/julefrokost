@@ -113,7 +113,7 @@ function render() {
       app.append(page);
       window.scrollTo(0, 0);
       const animation = page.animate([{opacity:0}, {opacity:1}], {
-        duration:240, easing:'cubic-bezier(.2,.6,.3,1)'
+        duration:300, easing:'cubic-bezier(.4,0,.2,1)'
       });
       const transition = {animation, outgoing};
       activeTransition = transition;
