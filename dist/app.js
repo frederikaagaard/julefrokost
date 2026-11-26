@@ -4,10 +4,13 @@ const profiles = new Map(data.profiles.map(p => [p.key, p]));
 let generationTimer;
 let renderVersion = 0;
 let activeTransition;
+let pendingImages = [];
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
 function image(asset, alt = '', eager = false) {
   const img = el('img'); img.src = asset.src; img.alt = alt; img.decoding = 'async';
-  img.loading = eager ? 'eager' : 'lazy'; return img;
+  img.loading = eager ? 'eager' : 'lazy';
+  if (eager && img.decode) pendingImages.push(img.decode().catch(() => {}));
+  return img;
 }
 function navigate(route) { if (location.hash === route) render(); else location.hash = route; }
 function brand(asset = data.logo) {
@@ -39,9 +42,9 @@ function players() {
   const page = el('section', 'screen players'); page.append(header());
   page.append(el('h1', '', 'Vælg en spiller'));
   const list = el('nav', 'player-list'); list.setAttribute('aria-label', 'Spillere');
-  for (const [index, p] of data.profiles.entries()) {
+  const preload = new Image(); preload.src = data.loading.src;
+  for (const p of data.profiles) {
     const button = el('button', 'pill player', p.player);
-    button.style.setProperty('--entry-delay', `${index * 35}ms`);
     button.addEventListener('click', () => navigate(`#/former/${p.key}`)); list.append(button);
   } page.append(list); return page;
 }
@@ -52,10 +55,6 @@ function generating(p) {
   page.append(circle, label);
   // Start loading the selected portrait while the five-second reveal runs.
   const preload = new Image(); preload.src = p.portrait.src;
-  const version = renderVersion;
-  generationTimer = setTimeout(() => {
-    if (version === renderVersion) location.replace(`#/profil/${p.key}`);
-  }, 5000);
   return page;
 }
 function profile(p) {
@@ -81,10 +80,12 @@ function profile(p) {
 }
 function render() {
   clearTimeout(generationTimer); renderVersion++;
+  pendingImages = [];
   const path = location.hash.slice(1).split('/').filter(Boolean); const p = profiles.get(path[1]);
   let page;
-  const dark = !path.length || path[0] === 'former' && p;
-  const background = dark ? (path[0] === 'former' ? '#00070c' : '#03070a') : '#e6e2dc';
+  const loading = path[0] === 'former' && p;
+  const dark = loading || !(path[0] === 'spillere' || path[0] === 'profil' && p);
+  const background = dark ? (loading ? '#00070c' : '#03070a') : '#e6e2dc';
   if (path[0] === 'spillere') page = players();
   else if (path[0] === 'former' && p) page = generating(p);
   else if (path[0] === 'profil' && p) page = profile(p);
@@ -93,16 +94,47 @@ function render() {
   const version = renderVersion;
   const commit = () => {
     if (version !== renderVersion) return;
+    // Keep the current, fully painted screen visible until incoming images decode.
+    if (activeTransition) {
+      activeTransition.animation.cancel();
+      activeTransition.outgoing.remove();
+      activeTransition = null;
+    }
+    const outgoing = app.children[0];
+    const scrollY = window.scrollY || 0;
     document.body.classList.toggle('dark', !!dark);
     document.body.style.backgroundColor = background;
     document.querySelector('meta[name="theme-color"]').content = background;
-    app.replaceChildren(page); window.scrollTo(0,0);
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (outgoing && page.animate && !reducedMotion) {
+      // Fade one opaque screen over another; never expose the page underneath.
+      outgoing.classList.add('screen-outgoing');
+      outgoing.style.top = `${-scrollY}px`;
+      app.append(page);
+      window.scrollTo(0, 0);
+      const animation = page.animate([{opacity:0}, {opacity:1}], {
+        duration:240, easing:'cubic-bezier(.2,.6,.3,1)'
+      });
+      const transition = {animation, outgoing};
+      activeTransition = transition;
+      const finish = () => {
+        if (activeTransition !== transition) return;
+        outgoing.remove();
+        activeTransition = null;
+      };
+      animation.finished.then(finish, finish);
+    } else {
+      app.replaceChildren(page);
+      window.scrollTo(0, 0);
+    }
+    if (loading) {
+      generationTimer = setTimeout(() => {
+        if (version === renderVersion) location.replace(`#/profil/${p.key}`);
+      }, 5000);
+    }
   };
-  activeTransition?.skipTransition();
-  if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    activeTransition = document.startViewTransition(commit);
-    activeTransition.finished.catch(() => {});
-  } else commit();
+  if (pendingImages.length) Promise.all(pendingImages).then(commit);
+  else commit();
 }
 window.addEventListener('hashchange', render);
 render();

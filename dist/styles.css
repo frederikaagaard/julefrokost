@@ -2,7 +2,7 @@
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink)}
 button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;border:0}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
 img{display:block}button{touch-action:manipulation}#app{width:100%;min-height:100svh;margin:auto;overflow:hidden}body.dark{background:var(--night)}
-.screen{position:relative;min-height:100svh}.home{background:var(--home-night);overflow:hidden;min-height:max(640px,100svh)}
+.screen{position:relative;z-index:1;min-height:100svh;background:var(--paper)}.home{background:var(--home-night);overflow:hidden;min-height:max(640px,100svh)}
 .home-art{position:absolute;left:50%;top:36px;transform:translateX(-50%);width:100%;height:517px;object-fit:cover;object-position:center;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 88%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 88%,transparent)}
 .home-brand{position:absolute;top:71.57%;left:50%;transform:translateX(-50%)}
 .pill{display:flex;align-items:center;justify-content:center;border-radius:48px;text-transform:uppercase;font-size:12px;line-height:14px;letter-spacing:.48px;font-weight:700;min-height:40px;background:var(--night);color:white;padding:13px 28px;text-align:center}
@@ -15,8 +15,8 @@ img{display:block}button{touch-action:manipulation}#app{width:100%;min-height:10
 .player-list{margin:0 20px;display:flex;flex-direction:column;gap:8px}.player{width:100%;height:52px;flex-shrink:0;background:var(--red);font-size:14px;line-height:16px;letter-spacing:.56px;padding:18px 12px;transition:background .15s,transform .15s}.player:active{background:#642725}
 .generating{background:var(--spinner-night);display:grid;place-items:center;min-height:100svh;overflow:hidden}
 .orbit{width:227px;height:227px;max-width:85vw;object-fit:contain;animation:fate-orbit 1.7s linear infinite;will-change:transform}
-.generating p{position:absolute;bottom:max(44px,env(safe-area-inset-bottom));margin:0;font-size:12px;line-height:14px;font-weight:bold;letter-spacing:.48px;text-transform:uppercase;color:white;animation:fate-caption 1.2s ease-in-out infinite alternate}
-@keyframes fate-orbit{to{transform:rotate(360deg)}}@keyframes fate-caption{to{opacity:.45}}
+.generating p{position:absolute;bottom:max(44px,env(safe-area-inset-bottom));margin:0;font-size:12px;line-height:14px;font-weight:bold;letter-spacing:.48px;text-transform:uppercase;color:white}
+@keyframes fate-orbit{to{transform:rotate(360deg)}}
 .profile{padding-bottom:max(48px,env(safe-area-inset-bottom))}.profile-heading{padding-top:28px;text-align:center}.flag{height:20px;margin:0 auto 16px;object-fit:cover}.profile-heading h1{font:40px/46px 'Times New Roman',serif;letter-spacing:-.8px;font-weight:400;margin:0 12px 48px}
 .photo{position:relative;overflow:hidden;width:calc(100% - 16px);margin:0 8px;background:transparent}.photo img{position:absolute;max-width:none;display:block}.portrait{margin-bottom:8px}
 .facts{margin:0 8px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:rgba(14,14,14,.1)}
@@ -26,23 +26,16 @@ img{display:block}button{touch-action:manipulation}#app{width:100%;min-height:10
 .gallery{display:flex;flex-direction:column;gap:8px}.caption{margin:0 8px 12px;font:bold 10px/11px Arial,sans-serif;letter-spacing:.4px;text-transform:uppercase;text-align:right;min-height:11px}
 .brand-panel{position:relative;width:calc(100% - 16px);margin:0 8px;background:var(--night);aspect-ratio:384 / 451.391}.brand-panel-inner{position:absolute;left:18.54%;top:43.2%;display:flex;align-items:center;gap:0;width:66.5%}.brand-panel b{font:bold 35.603px/41px Arial,sans-serif;color:white;text-transform:uppercase}.brand-panel img{width:20.7%;height:auto;position:static;object-fit:contain}
 .return{width:268px;max-width:calc(100% - 40px);margin:40px auto 0}
-@keyframes reveal{from{opacity:0}to{opacity:1}}
+
 #desktop{display:none}
 @media(max-width:359px){.profile-heading h1{font-size:36px}.fact dd{font-size:18px}.player{font-size:12px}.brand-panel b{font-size:30px}}
 @media(min-width:601px){#app{display:none}#desktop{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px}#desktop span{font:32px 'Times New Roman',serif}#desktop p{font-size:12px;letter-spacing:.5px;text-transform:uppercase}body.dark #desktop{color:var(--paper)}}
 
-/* Quiet motion, with the original artwork left untouched. */
-.screen{animation:screen-enter .32s ease-out both}
-.pill{transition:scale .14s ease-out,background-color .18s ease,filter .18s ease;transform-origin:center}
-.pill:active{scale:.975;filter:brightness(.94)}
+/* One crossfade layer only; the outgoing screen stays opaque until covered. */
+.screen-outgoing{position:fixed;left:0;right:0;width:100%;z-index:0;pointer-events:none}
+.pill{transition:scale .14s ease-out,background-color .18s ease;transform-origin:center}
+.pill:active{scale:.98}
 .brand,.back{transition:opacity .15s ease,scale .15s ease}
-.brand:active,.back:active{opacity:.6;scale:.96}
-.player{animation:player-enter .38s cubic-bezier(.2,.65,.3,1) both;animation-delay:var(--entry-delay,0ms)}
-@keyframes screen-enter{from{opacity:0}to{opacity:1}}
-@keyframes player-enter{from{opacity:0;translate:0 7px}to{opacity:1;translate:0 0}}
-::view-transition-old(root){animation:screen-exit .16s ease-out both}
-::view-transition-new(root){animation:screen-enter .28s ease-out both}
-html:active-view-transition .screen{animation:none}
-@keyframes screen-exit{to{opacity:0}}
-@media(hover:hover){.pill:hover{filter:brightness(1.06)}.brand:hover,.back:hover{opacity:.75}}
-@media(prefers-reduced-motion:reduce){.screen,.player,.orbit,.generating p{animation:none}.pill,.brand,.back{transition:none}::view-transition-old(root),::view-transition-new(root){animation:none}}
+.brand:active,.back:active{opacity:.7;scale:.97}
+@media(hover:hover){.brand:hover,.back:hover{opacity:.8}}
+@media(prefers-reduced-motion:reduce){.orbit{animation:none}.pill,.brand,.back{transition:none}}
