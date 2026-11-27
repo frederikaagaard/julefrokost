@@ -2,9 +2,9 @@ export const TEMPTATIONS = ['🍑','🍈','🚬','🍺','🍔','🦠','💊','�
 export class Runner {
   constructor(random = Math.random) { this.random = random; this.reset(); }
   reset() {
-    this.score = 0; this.time = 0; this.speed = 8; this.y = 0; this.vy = 0;
+    this.score = 0; this.time = 0; this.speed = 9; this.y = 0; this.vy = 0;
     this.lane = 0; this.x = 0; this.safeLane = 1; this.wave = 0;
-    this.obstacles = []; this.nextSpawn = 1.5; this.distance = 0;
+    this.obstacles = []; this.nextSpawn = 1.25; this.distance = 0;
     this.over = false; this.culprit = ''; this.bag = []; this.buffer = 0;
     this.spawn(20, true);
   }
@@ -20,13 +20,14 @@ export class Runner {
   }
   spawn(z = 32, first = false) {
     const choices=[-1,0,1].filter(lane=>Math.abs(lane-this.safeLane)<=1);
-    const safe=first?1:choices[Math.floor(this.random()*choices.length)];
+    const jumpRequired=!first&&this.score>=6&&this.wave%4===3;
+    const safe=jumpRequired?this.safeLane:first?1:choices[Math.floor(this.random()*choices.length)];
     const occupied=[-1,0,1].filter(lane=>lane!==safe);
-    const lanes=first?[0]:this.score<4?[occupied[Math.floor(this.random()*occupied.length)]]:occupied;
+    const lanes=jumpRequired?[-1,0,1]:first?[0]:this.score<2?[occupied[Math.floor(this.random()*occupied.length)]]:occupied;
     const reverse=this.random()<.5;
     lanes.forEach((lane,index)=>this.obstacles.push({
-      z:z+(reverse?lanes.length-1-index:index)*2,
-      lane, safeLane:safe, wave:this.wave, emoji:this.nextEmoji(), scored:false
+      z:z+(jumpRequired?0:(reverse?lanes.length-1-index:index)*2),
+      lane, safeLane:safe, jumpRequired, wave:this.wave, emoji:this.nextEmoji(), scored:false
     }));
     this.safeLane=safe;this.wave++;
   }
@@ -42,7 +43,7 @@ export class Runner {
   step(dt) {
     if (this.over || dt<=0) return;
     dt=Math.min(dt,1/30); this.time+=dt;
-    this.speed=Math.min(14,8+this.score*.28); this.distance+=this.speed*dt;
+    this.speed=Math.min(16,9+this.score*.45); this.distance+=this.speed*dt;
     const shift=this.lane-this.x;
     this.x+=Math.sign(shift)*Math.min(Math.abs(shift),5*dt);
     this.buffer=Math.max(0,this.buffer-dt);
@@ -52,7 +53,7 @@ export class Runner {
     }
     this.nextSpawn-=dt;
     if(this.nextSpawn<=0) {
-      this.spawn(); this.nextSpawn=Math.max(1.0,1.4-this.score*.014)+this.random()*.25;
+      this.spawn(); this.nextSpawn=Math.max(1.0,1.25-this.score*.018)+this.random()*.25;
     }
     for (const obstacle of this.obstacles) {
       obstacle.z-=this.speed*dt;
