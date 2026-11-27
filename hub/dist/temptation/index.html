@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7e3331">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Game of Fate — Undvig din skæbne</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="game.js"></script>
+  <link rel="stylesheet" href="/menu.css">
+  <script src="/menu.js" defer></script>
+</head>
+<body>
+  <main id="game" data-screen="intro" aria-label="Game of Fate. Tap i siderne for at skifte spor og i midten for at hoppe.">
+    <canvas id="world" aria-label="Løbebane med fristelser"></canvas>
+    <header><img id="wordmark" src="assets/home-logo.svg" alt="Game of Fate"></header>
+    <div class="hud"><div><span>POINT</span><strong id="score">000</strong></div><div class="best"><span>REKORD</span><strong id="best">000</strong></div></div>
+    <section id="intro" class="panel">
+      <div class="emoji-ring" aria-hidden="true"><div id="emoji-orbit"></div></div>
+      <h1>Avoid Temptation</h1>
+      <p class="controls-copy">SIDERNE: SKIFT SPOR · MIDTEN: HOP</p>
+      <button id="start">START SPILLET</button>
+    </section>
+    <section id="result" class="panel result" hidden aria-live="polite">
+      <p class="eyebrow" id="record-label">DIN SKÆBNE INDHENTEDE DIG</p>
+      <h2>K.O.</h2>
+      <div id="culprit" aria-hidden="true"></div>
+      <p class="result-score"><strong id="final-score">0</strong> POINT</p>
+      <button id="retry">PRØV IGEN</button>
+    </section>
+    <section id="pause" class="panel paused" hidden>
+      <p class="eyebrow">SKÆBNEN KAN VENTE</p><h2>Pause.</h2>
+      <button id="resume">FORTSÆT</button>
+    </section>
+    <div id="hint" hidden><span>VENSTRE</span><span>HOP</span><span>HØJRE</span></div>
+    <noscript>Slå JavaScript til for at spille.</noscript>
+  </main>
+</body>
+</html>
