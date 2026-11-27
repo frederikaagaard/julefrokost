@@ -44,22 +44,38 @@ function draw(){
   ctx.clearRect(0,0,width,height);ctx.fillStyle='#e6e2dc';ctx.fillRect(0,0,width,height);
   const center=width/2, ground=height*.78, horizon=height*.30;
 
-  polygon([[center-width*.055,horizon],[center+width*.055,horizon],[width*1.3,height],[-width*.3,height]],'#d8d2c9');
-  ctx.lineWidth=1;
-  for(const side of [-1,1]){ctx.strokeStyle='#b4aa9b';ctx.beginPath();ctx.moveTo(center+side*width*.055,horizon);ctx.lineTo(center+side*width*.8,height);ctx.stroke();}
-  // Two lane dividers converge with the perspective track.
-  for(const lane of [-.5,.5]){
-    const far=project(40,lane),near=project(-3,lane);
-    ctx.strokeStyle='#b4aa9b';ctx.beginPath();ctx.moveTo(far.x,far.y);ctx.lineTo(near.x,near.y);ctx.stroke();
+  // A continuously scrolling football pitch, projected onto the same ground as the runner.
+  const point=(z,lane)=>{const p=project(z,lane);return [p.x,p.y];};
+  polygon([point(50,-1.8),point(50,1.8),point(-3,1.8),point(-3,-1.8)],'#397b43');
+  for(let i=0;i<14;i++){
+    const z=i*4-(game.distance%8)-4, near=Math.max(-3,z),far=Math.min(50,z+4);
+    if(far<=near)continue;
+    polygon([point(far,-1.8),point(far,1.8),point(near,1.8),point(near,-1.8)],i%2?'#438c4d':'#4b9652');
   }
-  for(let i=0;i<12;i++){
-    const z=(i*3-(game.distance%3)+36)%36, p=project(z), half=width*.26*p.k;
-    ctx.strokeStyle='#c4b9aa';ctx.beginPath();ctx.moveTo(center-half,p.y);ctx.lineTo(center+half,p.y);ctx.stroke();
+  // Fine grass blades stay attached to the moving surface.
+  ctx.strokeStyle='#74ac65';ctx.lineWidth=.7;
+  for(let i=0;i<100;i++){
+    const z=((i*7.37-game.distance)%44+44)%44-2;
+    const p=project(z,((i*1.618)%3.4)-1.7);
+    ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+1.2*p.k,p.y-3*p.k);ctx.stroke();
   }
-  // Small roadside markers establish depth without extra obstacles.
-  for(let i=0;i<9;i++)for(const side of [-1,1]){
-    const p=project((i*4-(game.distance%4)+36)%36), x=center+side*width*.34*p.k;
-    ctx.fillStyle='#7e3331';ctx.fillRect(x,p.y-12*scale*p.k,2*scale*p.k,12*scale*p.k);
+  const marking=(points,closed=false)=>{
+    ctx.strokeStyle='#f5f4e7';ctx.lineWidth=Math.max(1,2*scale);ctx.lineJoin='round';ctx.beginPath();
+    points.forEach(([z,lane],i)=>{const p=project(z,lane);if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});
+    if(closed)ctx.closePath();ctx.stroke();
+  };
+  for(const side of [-1,1])marking([[50,side*1.55],[-3,side*1.55]]);
+  const mid=24-(game.distance%32);
+  if(mid>=-2&&mid<=40){
+    marking([[mid,-1.55],[mid,1.55]]);
+    const circle=[];for(let i=0;i<=64;i++){const a=i/64*Math.PI*2;circle.push([mid+Math.cos(a)*2.5,Math.sin(a)*.8]);}
+    if(mid>0)marking(circle,true);
+  }
+  const end=mid+14;
+  if(end>1&&end<46){
+    marking([[end,-1.55],[end,1.55]]);
+    marking([[end,-1],[end-4,-1],[end-4,1],[end,1]]);
+    marking([[end,-.5],[end-1.5,-.5],[end-1.5,.5],[end,.5]]);
   }
   const obstacles=[...game.obstacles].sort((a,b)=>b.z-a.z);
   for(const o of obstacles.filter(o=>o.z>=0))drawObstacle(o);
@@ -68,7 +84,7 @@ function draw(){
 }
 function drawObstacle(o){
   const p=project(o.z,o.lane??0), size=74*scale*p.k, x=p.x;
-  ellipse(x,p.y+3*scale*p.k,size*.45,size*.11,'#c6bdae');
+  ellipse(x,p.y+3*scale*p.k,size*.45,size*.11,'#285b35');
   ctx.font=`${size}px ${emojiFont}`;ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(o.emoji,x,p.y+size*.08);
 }
 function limb(x,y,length,angle,color,w){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.strokeStyle=color;ctx.lineWidth=w;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,length);ctx.stroke();ctx.restore();}
@@ -76,7 +92,7 @@ function drawPerson(x,ground){
   const s=scale, jumping=game.y>.01, cycle=game.distance*1.5;
   const stride=state==='playing'&&!jumping?Math.sin(cycle)*.55:0;
   const y=ground-game.y*64*s;
-  ellipse(x,ground+5*s,(24-game.y*4)*s,7*s,'#bdb3a4');
+  ellipse(x,ground+5*s,(24-game.y*4)*s,7*s,'#285b35');
   ctx.save();ctx.translate(x,y);ctx.scale(s,s);
   const bob=jumping?0:Math.abs(Math.sin(cycle))*2;ctx.translate(0,-bob);
   limb(-9,-27,29,stride,'#caa18a',10);limb(9,-27,29,-stride,'#e6bca2',10);
