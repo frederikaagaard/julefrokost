@@ -64,7 +64,7 @@ function draw(){
     points.forEach(([z,lane],i)=>{const p=project(z,lane);if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});
     if(closed)ctx.closePath();ctx.stroke();
   };
-  for(const side of [-1,1])for(const edge of [1.45,1.55])marking([[50,side*edge],[-3,side*edge]]);
+  for(const side of [-1,1])marking([[50,side*1.55],[-3,side*1.55]]);
   const obstacles=[...game.obstacles].sort((a,b)=>b.z-a.z);
   for(const o of obstacles.filter(o=>o.z>=0))drawObstacle(o);
   drawPerson(project(0,game.x).x,ground);

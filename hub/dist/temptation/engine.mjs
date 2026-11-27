@@ -22,7 +22,7 @@ export class Runner {
     const choices=[-1,0,1].filter(lane=>Math.abs(lane-this.safeLane)<=1);
     const safe=first?1:choices[Math.floor(this.random()*choices.length)];
     const occupied=[-1,0,1].filter(lane=>lane!==safe);
-    const lanes=first?[0]:this.score<6?[occupied[Math.floor(this.random()*occupied.length)]]:occupied;
+    const lanes=first?[0]:this.score<4?[occupied[Math.floor(this.random()*occupied.length)]]:occupied;
     const reverse=this.random()<.5;
     lanes.forEach((lane,index)=>this.obstacles.push({
       z:z+(reverse?lanes.length-1-index:index)*2,
@@ -42,7 +42,7 @@ export class Runner {
   step(dt) {
     if (this.over || dt<=0) return;
     dt=Math.min(dt,1/30); this.time+=dt;
-    this.speed=Math.min(14,8+this.score*.20); this.distance+=this.speed*dt;
+    this.speed=Math.min(14,8+this.score*.28); this.distance+=this.speed*dt;
     const shift=this.lane-this.x;
     this.x+=Math.sign(shift)*Math.min(Math.abs(shift),5*dt);
     this.buffer=Math.max(0,this.buffer-dt);
@@ -52,7 +52,7 @@ export class Runner {
     }
     this.nextSpawn-=dt;
     if(this.nextSpawn<=0) {
-      this.spawn(); this.nextSpawn=Math.max(1.08,1.5-this.score*.009)+this.random()*.25;
+      this.spawn(); this.nextSpawn=Math.max(1.0,1.4-this.score*.014)+this.random()*.25;
     }
     for (const obstacle of this.obstacles) {
       obstacle.z-=this.speed*dt;
