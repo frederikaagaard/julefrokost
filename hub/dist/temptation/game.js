@@ -64,19 +64,7 @@ function draw(){
     points.forEach(([z,lane],i)=>{const p=project(z,lane);if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});
     if(closed)ctx.closePath();ctx.stroke();
   };
-  for(const side of [-1,1])marking([[50,side*1.55],[-3,side*1.55]]);
-  const mid=24-(game.distance%32);
-  if(mid>=-2&&mid<=40){
-    marking([[mid,-1.55],[mid,1.55]]);
-    const circle=[];for(let i=0;i<=64;i++){const a=i/64*Math.PI*2;circle.push([mid+Math.cos(a)*2.5,Math.sin(a)*.8]);}
-    if(mid>0)marking(circle,true);
-  }
-  const end=mid+14;
-  if(end>1&&end<46){
-    marking([[end,-1.55],[end,1.55]]);
-    marking([[end,-1],[end-4,-1],[end-4,1],[end,1]]);
-    marking([[end,-.5],[end-1.5,-.5],[end-1.5,.5],[end,.5]]);
-  }
+  for(const side of [-1,1])for(const edge of [1.45,1.55])marking([[50,side*edge],[-3,side*edge]]);
   const obstacles=[...game.obstacles].sort((a,b)=>b.z-a.z);
   for(const o of obstacles.filter(o=>o.z>=0))drawObstacle(o);
   drawPerson(project(0,game.x).x,ground);

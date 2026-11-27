@@ -11,7 +11,7 @@ header{position:absolute;top:max(20.76px,env(safe-area-inset-top));left:0;right:
 #game[data-screen="intro"] header{top:max(39px,env(safe-area-inset-top))}
 #game[data-screen="intro"] canvas{visibility:hidden}
 h1,h2{font-family:'Times New Roman',serif;font-weight:400;margin:0;letter-spacing:-.8px}
-h1{position:absolute;left:0;right:0;top:67.75%;font-size:40px;line-height:46px;white-space:nowrap}
+h1{position:absolute;left:0;right:0;top:calc(67.75% + 40px);font-size:40px;line-height:46px;white-space:nowrap}
 .emoji-ring{--ring-size:min(70vw,280px,38svh);position:absolute;left:50%;top:45%;width:var(--ring-size);height:var(--ring-size);transform:translate(-50%,-50%)}
 #emoji-orbit{position:absolute;inset:0;animation:orbit 32s linear infinite}
 .orbit-slot{position:absolute;left:50%;top:50%;width:46px;height:46px;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(calc(var(--ring-size) * -.5)) rotate(calc(var(--angle) * -1))}
@@ -27,4 +27,4 @@ button{position:absolute;bottom:max(40px,env(safe-area-inset-bottom));left:50%;t
 
 .controls-copy{position:absolute;top:75%;left:0;right:0;margin:0;font-size:10px;letter-spacing:.65px;line-height:16px;font-weight:700}
 
-@media(max-height:560px){#intro h1{top:65%;line-height:38px}.controls-copy{top:auto;bottom:74px;font-size:9px}}
+@media(max-height:560px){#intro h1{top:calc(65% + 40px);line-height:38px}.controls-copy{top:auto;bottom:74px;font-size:9px}}
