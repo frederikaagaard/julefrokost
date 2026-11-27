@@ -1,13 +1,14 @@
-import {Runner} from './engine.mjs';
+import {Runner,TEMPTATIONS} from './engine.mjs';
 const $=id=>document.getElementById(id);
 const canvas=$('world'), ctx=canvas.getContext('2d'), game=new Runner();
 let state='intro', best=0, last=0, accumulator=0, width=0, height=0, scale=1, koAt=0;
 try { best=Math.max(0,Number(localStorage.getItem('game-of-fate-runner-best'))||0); } catch {}
 $('best').textContent=String(best).padStart(3,'0');
+for(const [index,emoji] of TEMPTATIONS.entries()){const slot=document.createElement('span');slot.className='orbit-slot';slot.style.setProperty('--angle',`${index*45}deg`);const symbol=document.createElement('span');symbol.textContent=emoji;slot.append(symbol);$('emoji-orbit').append(slot);}
 const emojiFont='"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
 function resize(){const rect=$('game').getBoundingClientRect();width=rect.width;height=rect.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);scale=Math.min(width/400,height/700);}
 window.addEventListener('resize',resize);resize();
-function show(id){for(const name of ['intro','result','pause'])$(name).hidden=name!==id;$('hint').hidden=!!id;}
+function show(id){for(const name of ['intro','result','pause'])$(name).hidden=name!==id;$('hint').hidden=!!id;$('game').dataset.screen=id||'playing';$('wordmark').src=id==='intro'?'assets/home-logo.svg':'assets/play-logo.svg';document.querySelector('meta[name="theme-color"]').content=id==='intro'?'#7e3331':'#e6e2dc';}
 function start(){game.reset();state='playing';accumulator=0;last=performance.now();$('score').textContent='000';show(null);}
 function pause(){if(state!=='playing')return;state='paused';show('pause');}
 function resume(){state='playing';last=performance.now();accumulator=0;show(null);}
@@ -29,20 +30,20 @@ function polygon(points,fill){ctx.fillStyle=fill;ctx.beginPath();points.forEach(
 function ellipse(x,y,rx,ry,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
 function project(z){const k=7/(z+7);return {k,y:height*.30+(height*.78-height*.30)*k};}
 function draw(){
-  ctx.clearRect(0,0,width,height);ctx.fillStyle='#03070a';ctx.fillRect(0,0,width,height);
+  ctx.clearRect(0,0,width,height);ctx.fillStyle='#e6e2dc';ctx.fillRect(0,0,width,height);
   const center=width/2, ground=height*.78, horizon=height*.30;
-  const glow=ctx.createRadialGradient(center,horizon,0,center,horizon,width*.65);glow.addColorStop(0,'#0b2936');glow.addColorStop(1,'#03070a');ctx.fillStyle=glow;ctx.fillRect(0,0,width,height);
-  polygon([[center-width*.055,horizon],[center+width*.055,horizon],[width*1.3,height],[-width*.3,height]],'#0a1720');
+
+  polygon([[center-width*.055,horizon],[center+width*.055,horizon],[width*1.3,height],[-width*.3,height]],'#d8d2c9');
   ctx.lineWidth=1;
-  for(const side of [-1,1]){ctx.strokeStyle='#214655';ctx.beginPath();ctx.moveTo(center+side*width*.055,horizon);ctx.lineTo(center+side*width*.8,height);ctx.stroke();}
+  for(const side of [-1,1]){ctx.strokeStyle='#b4aa9b';ctx.beginPath();ctx.moveTo(center+side*width*.055,horizon);ctx.lineTo(center+side*width*.8,height);ctx.stroke();}
   for(let i=0;i<12;i++){
     const z=(i*3-(game.distance%3)+36)%36, p=project(z), half=width*.26*p.k;
-    ctx.strokeStyle=`rgba(72,203,243,${.05+.12*p.k})`;ctx.beginPath();ctx.moveTo(center-half,p.y);ctx.lineTo(center+half,p.y);ctx.stroke();
+    ctx.strokeStyle='#c4b9aa';ctx.beginPath();ctx.moveTo(center-half,p.y);ctx.lineTo(center+half,p.y);ctx.stroke();
   }
   // Small roadside markers establish depth without extra obstacles.
   for(let i=0;i<9;i++)for(const side of [-1,1]){
     const p=project((i*4-(game.distance%4)+36)%36), x=center+side*width*.34*p.k;
-    ctx.fillStyle='#48cbf3';ctx.globalAlpha=.15+.3*p.k;ctx.fillRect(x,p.y-12*scale*p.k,2*scale*p.k,12*scale*p.k);ctx.globalAlpha=1;
+    ctx.fillStyle='#7e3331';ctx.fillRect(x,p.y-12*scale*p.k,2*scale*p.k,12*scale*p.k);
   }
   const obstacles=[...game.obstacles].sort((a,b)=>b.z-a.z);
   for(const o of obstacles.filter(o=>o.z>=0))drawObstacle(o);
@@ -51,7 +52,7 @@ function draw(){
 }
 function drawObstacle(o){
   const p=project(o.z), size=74*scale*p.k, x=width/2;
-  ellipse(x,p.y+3*scale*p.k,size*.45,size*.11,'#00000050');
+  ellipse(x,p.y+3*scale*p.k,size*.45,size*.11,'#c6bdae');
   ctx.font=`${size}px ${emojiFont}`;ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(o.emoji,x,p.y+size*.08);
 }
 function limb(x,y,length,angle,color,w){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.strokeStyle=color;ctx.lineWidth=w;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,length);ctx.stroke();ctx.restore();}
@@ -59,7 +60,7 @@ function drawPerson(x,ground){
   const s=scale, jumping=game.y>.01, cycle=game.distance*1.5;
   const stride=state==='playing'&&!jumping?Math.sin(cycle)*.55:0;
   const y=ground-game.y*64*s;
-  ellipse(x,ground+5*s,(24-game.y*4)*s,7*s,`rgba(0,0,0,${.5-game.y*.12})`);
+  ellipse(x,ground+5*s,(24-game.y*4)*s,7*s,'#bdb3a4');
   ctx.save();ctx.translate(x,y);ctx.scale(s,s);
   const bob=jumping?0:Math.abs(Math.sin(cycle))*2;ctx.translate(0,-bob);
   limb(-9,-27,29,stride,'#caa18a',10);limb(9,-27,29,-stride,'#e6bca2',10);
