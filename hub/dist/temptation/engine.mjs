@@ -4,7 +4,7 @@ export class Runner {
   reset() {
     this.score = 0; this.time = 0; this.speed = 9; this.y = 0; this.vy = 0;
     this.lane = 0; this.x = 0; this.safeLane = 1; this.wave = 0;
-    this.obstacles = []; this.nextSpawn = 1.25; this.distance = 0;
+    this.obstacles = []; this.nextSpawn = 1.05; this.distance = 0;
     this.over = false; this.culprit = ''; this.bag = []; this.buffer = 0;
     this.spawn(20, true);
   }
@@ -43,7 +43,7 @@ export class Runner {
   step(dt) {
     if (this.over || dt<=0) return;
     dt=Math.min(dt,1/30); this.time+=dt;
-    this.speed=Math.min(16,9+this.score*.45); this.distance+=this.speed*dt;
+    this.speed=Math.min(20,9+this.score*.70); this.distance+=this.speed*dt;
     const shift=this.lane-this.x;
     this.x+=Math.sign(shift)*Math.min(Math.abs(shift),5*dt);
     this.buffer=Math.max(0,this.buffer-dt);
@@ -53,7 +53,12 @@ export class Runner {
     }
     this.nextSpawn-=dt;
     if(this.nextSpawn<=0) {
-      this.spawn(); this.nextSpawn=Math.max(1.0,1.25-this.score*.018)+this.random()*.25;
+      this.spawn();
+      const lastWasJump=this.obstacles.some(o=>o.wave===this.wave-1&&o.jumpRequired);
+      const nextIsJump=this.score>=6&&this.wave%4===3;
+      // Dense lane-change waves; jump walls retain enough runway for landing.
+      const gap=Math.max(.44,1.05-this.score*.055)+this.random()*.10;
+      this.nextSpawn=(lastWasJump||nextIsJump)?Math.max(.96,gap):gap;
     }
     for (const obstacle of this.obstacles) {
       obstacle.z-=this.speed*dt;
