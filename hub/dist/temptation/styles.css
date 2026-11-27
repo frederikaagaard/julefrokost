@@ -8,7 +8,7 @@ header{position:absolute;top:max(20.76px,env(safe-area-inset-top));left:0;right:
 #game:not([data-screen="playing"]) .hud{display:none}
 .panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:110px 24px 120px;text-align:center;background:#e6e2dc;z-index:2}
 #intro{display:block;padding:0;background:#7e3331;color:white}
-#game[data-screen="intro"] header{top:max(39px,env(safe-area-inset-top))}
+#game[data-screen="intro"] header{top:max(20.76px,env(safe-area-inset-top))}
 #game[data-screen="intro"] canvas{visibility:hidden}
 h1,h2{font-family:'Times New Roman',serif;font-weight:400;margin:0;letter-spacing:-.8px}
 h1{position:absolute;left:0;right:0;top:calc(67.75% + 40px);font-size:40px;line-height:46px;white-space:nowrap}

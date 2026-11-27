@@ -8,7 +8,7 @@ for(const [index,emoji] of TEMPTATIONS.entries()){const slot=document.createElem
 const emojiFont='"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
 function resize(){const rect=$('game').getBoundingClientRect();width=rect.width;height=rect.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);scale=Math.min(width/400,height/700);}
 window.addEventListener('resize',resize);resize();
-function show(id){for(const name of ['intro','result','pause'])$(name).hidden=name!==id;$('hint').hidden=!!id;$('game').dataset.screen=id||'playing';$('wordmark').src=id==='intro'?'assets/home-logo.svg':'assets/play-logo.svg';document.querySelector('meta[name="theme-color"]').content=id==='intro'?'#7e3331':'#e6e2dc';}
+function show(id){for(const name of ['intro','result','pause'])$(name).hidden=name!==id;$('hint').hidden=!!id;$('game').dataset.screen=id||'playing';$('wordmark').src=id==='intro'?'/game-home-logo.svg':'assets/play-logo.svg';document.querySelector('meta[name="theme-color"]').content=id==='intro'?'#7e3331':'#e6e2dc';}
 function start(){game.reset();state='playing';accumulator=0;last=performance.now();$('score').textContent='000';show(null);}
 function pause(){if(state!=='playing')return;state='paused';show('pause');}
 function resume(){state='playing';last=performance.now();accumulator=0;show(null);}

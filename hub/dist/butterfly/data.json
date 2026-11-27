@@ -961,14 +961,14 @@
     "height": 20.0
   },
   "homeLogo": {
-    "src": "assets/e4923bb2bd00c3b7.svg",
+    "src": "/game-home-logo.svg",
     "crop": {
       "width": "100%",
       "height": "100%"
     },
     "id": "1577:988",
-    "width": 134.782,
-    "height": 25.526
+    "width": 105.603,
+    "height": 20
   },
   "homeImage": {
     "src": "assets/home-butterfly-v2.png",
