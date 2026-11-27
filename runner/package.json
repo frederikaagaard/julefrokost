@@ -1,0 +1,1 @@
+{"name":"game-of-fate-runner","private":true,"type":"module","scripts":{"dev":"python3 -m http.server 3000 --directory dist","test":"node scripts/test.mjs"}}
