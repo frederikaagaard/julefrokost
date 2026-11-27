@@ -44,7 +44,7 @@ export class Runner {
     dt=Math.min(dt,1/30); this.time+=dt;
     this.speed=Math.min(14,8+this.score*.13); this.distance+=this.speed*dt;
     const shift=this.lane-this.x;
-    this.x+=Math.sign(shift)*Math.min(Math.abs(shift),8*dt);
+    this.x+=Math.sign(shift)*Math.min(Math.abs(shift),5*dt);
     this.buffer=Math.max(0,this.buffer-dt);
     if (this.y>0 || this.vy>0) {
       this.y=Math.max(0,this.y+this.vy*dt-10*dt*dt); this.vy-=20*dt;

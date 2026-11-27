@@ -23,7 +23,8 @@ const freeze=safe.distance;safe.over=true;safe.step(1/60);assert.equal(safe.dist
 console.log('No-input K.O., restart, no double jump, 100 consecutive jumps, all 8 emojis, collision and scoring passed.');
 // Lane changes are bounded and take time; adjacent-lane obstacles do not collide.
 const lanes=new Runner(()=>.5);lanes.move(-1);lanes.move(-1);assert.equal(lanes.lane,-1);
-assert.equal(lanes.x,0);for(let i=0;i<20;i++)lanes.step(1/120);assert.equal(lanes.x,-1);
+assert.equal(lanes.x,0);for(let i=0;i<12;i++)lanes.step(1/120);assert.ok(Math.abs(lanes.x+.5)<1e-9);
+for(let i=0;i<13;i++)lanes.step(1/120);assert.equal(lanes.x,-1);
 lanes.move(1);lanes.move(1);lanes.move(1);assert.equal(lanes.lane,1);
 lanes.reset();assert.equal(lanes.x,0);assert.equal(lanes.lane,0);
 lanes.obstacles=[{z:.63,lane:1,emoji:'🍑',scored:false}];lanes.step(1/120);assert.equal(lanes.over,false);
