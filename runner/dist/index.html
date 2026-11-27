@@ -10,13 +10,14 @@
   <script type="module" src="game.js"></script>
 </head>
 <body>
-  <main id="game" data-screen="intro" aria-label="Game of Fate. Tap eller tryk mellemrum for at hoppe.">
+  <main id="game" data-screen="intro" aria-label="Game of Fate. Tap i siderne for at skifte spor og i midten for at hoppe.">
     <canvas id="world" aria-label="Løbebane med fristelser"></canvas>
     <header><img id="wordmark" src="assets/home-logo.svg" alt="Game of Fate"></header>
     <div class="hud"><div><span>POINT</span><strong id="score">000</strong></div><div class="best"><span>REKORD</span><strong id="best">000</strong></div></div>
     <section id="intro" class="panel">
       <div class="emoji-ring" aria-hidden="true"><div id="emoji-orbit"></div></div>
       <h1>Avoid Temptation</h1>
+      <p class="controls-copy">SIDERNE: SKIFT SPOR · MIDTEN: HOP</p>
       <button id="start">START SPILLET</button>
     </section>
     <section id="result" class="panel result" hidden aria-live="polite">
@@ -30,7 +31,7 @@
       <p class="eyebrow">SKÆBNEN KAN VENTE</p><h2>Pause.</h2>
       <button id="resume">FORTSÆT</button>
     </section>
-    <p id="hint" hidden>TAP HVOR SOM HELST FOR AT HOPPE</p>
+    <div id="hint" hidden><span>VENSTRE</span><span>HOP</span><span>HØJRE</span></div>
     <noscript>Slå JavaScript til for at spille.</noscript>
   </main>
 </body>

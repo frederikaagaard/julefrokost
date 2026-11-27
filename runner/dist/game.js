@@ -22,13 +22,24 @@ function lose(){
 $('start').addEventListener('click',start);
 $('retry').addEventListener('click',()=>{if(performance.now()-koAt>300)start();});
 $('resume').addEventListener('click',resume);
-$('game').addEventListener('pointerdown',event=>{if(event.target.closest('button'))return;if(state==='playing'){event.preventDefault();game.jump();}});
-window.addEventListener('keydown',event=>{if(!['Space','ArrowUp'].includes(event.code))return;event.preventDefault();if(event.repeat)return;if(state==='playing')game.jump();else if(state==='paused')resume();else if(state==='intro'||performance.now()-koAt>300)start();});
+$('game').addEventListener('pointerdown',event=>{
+  if(event.target.closest('button')||state!=='playing')return;
+  event.preventDefault();
+  const rect=$('game').getBoundingClientRect(), position=(event.clientX-rect.left)/rect.width;
+  if(position<1/3)game.move(-1);else if(position>2/3)game.move(1);else game.jump();
+});
+window.addEventListener('keydown',event=>{
+  if(!['Space','ArrowUp','ArrowLeft','ArrowRight'].includes(event.code))return;
+  event.preventDefault();if(event.repeat)return;
+  if(state==='playing'){
+    if(event.code==='ArrowLeft')game.move(-1);else if(event.code==='ArrowRight')game.move(1);else game.jump();
+  }else if(state==='paused')resume();else if(state==='intro'||performance.now()-koAt>300)start();
+});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();last=performance.now();accumulator=0;});
 window.addEventListener('blur',pause);
 function polygon(points,fill){ctx.fillStyle=fill;ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fill();}
 function ellipse(x,y,rx,ry,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
-function project(z){const k=7/(z+7);return {k,y:height*.30+(height*.78-height*.30)*k};}
+function project(z,lane=0){const k=7/(z+7);return {k,x:width/2+lane*width*.22*k,y:height*.30+(height*.78-height*.30)*k};}
 function draw(){
   ctx.clearRect(0,0,width,height);ctx.fillStyle='#e6e2dc';ctx.fillRect(0,0,width,height);
   const center=width/2, ground=height*.78, horizon=height*.30;
@@ -36,6 +47,11 @@ function draw(){
   polygon([[center-width*.055,horizon],[center+width*.055,horizon],[width*1.3,height],[-width*.3,height]],'#d8d2c9');
   ctx.lineWidth=1;
   for(const side of [-1,1]){ctx.strokeStyle='#b4aa9b';ctx.beginPath();ctx.moveTo(center+side*width*.055,horizon);ctx.lineTo(center+side*width*.8,height);ctx.stroke();}
+  // Two lane dividers converge with the perspective track.
+  for(const lane of [-.5,.5]){
+    const far=project(40,lane),near=project(-3,lane);
+    ctx.strokeStyle='#b4aa9b';ctx.beginPath();ctx.moveTo(far.x,far.y);ctx.lineTo(near.x,near.y);ctx.stroke();
+  }
   for(let i=0;i<12;i++){
     const z=(i*3-(game.distance%3)+36)%36, p=project(z), half=width*.26*p.k;
     ctx.strokeStyle='#c4b9aa';ctx.beginPath();ctx.moveTo(center-half,p.y);ctx.lineTo(center+half,p.y);ctx.stroke();
@@ -47,11 +63,11 @@ function draw(){
   }
   const obstacles=[...game.obstacles].sort((a,b)=>b.z-a.z);
   for(const o of obstacles.filter(o=>o.z>=0))drawObstacle(o);
-  drawPerson(center,ground);
+  drawPerson(project(0,game.x).x,ground);
   for(const o of obstacles.filter(o=>o.z<0))drawObstacle(o);
 }
 function drawObstacle(o){
-  const p=project(o.z), size=74*scale*p.k, x=width/2;
+  const p=project(o.z,o.lane??0), size=74*scale*p.k, x=p.x;
   ellipse(x,p.y+3*scale*p.k,size*.45,size*.11,'#c6bdae');
   ctx.font=`${size}px ${emojiFont}`;ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(o.emoji,x,p.y+size*.08);
 }
