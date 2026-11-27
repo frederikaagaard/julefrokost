@@ -6,9 +6,11 @@ try { best=Math.max(0,Number(localStorage.getItem('game-of-fate-runner-best'))||
 $('best').textContent=String(best).padStart(3,'0');
 for(const [index,emoji] of TEMPTATIONS.entries()){const slot=document.createElement('span');slot.className='orbit-slot';slot.style.setProperty('--angle',`${index*45}deg`);const symbol=document.createElement('span');symbol.textContent=emoji;slot.append(symbol);$('emoji-orbit').append(slot);}
 const emojiFont='"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
-function resize(){const rect=$('game').getBoundingClientRect();width=rect.width;height=rect.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);scale=Math.min(width/400,height/700);}
-window.addEventListener('resize',resize);resize();
-function show(id){for(const name of ['intro','result','pause'])$(name).hidden=name!==id;$('hint').hidden=!!id;$('game').dataset.screen=id||'playing';$('wordmark').src=id==='intro'?'/game-home-logo.svg':'assets/play-logo.svg';document.querySelector('meta[name="theme-color"]').content=id==='intro'?'#7e3331':'#e6e2dc';}
+function resize(){const rect=$('game').getBoundingClientRect();width=rect.width;height=rect.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);scale=width/400;}
+window.addEventListener('resize',resize);
+new ResizeObserver(resize).observe($('game'));
+window.visualViewport?.addEventListener('resize',resize);resize();
+function show(id){for(const name of ['intro','result','pause'])$(name).hidden=name!==id;$('hint').hidden=!!id;$('game').dataset.screen=id||'playing';$('wordmark').src=id==='intro'?'/game-home-logo.svg':'/butterfly/assets/2b90f964111f2aef.svg';document.querySelector('meta[name="theme-color"]').content=id==='intro'?'#7e3331':'#e6e2dc';}
 function start(){game.reset();state='playing';accumulator=0;last=performance.now();$('score').textContent='000';show(null);}
 function pause(){if(state!=='playing')return;state='paused';show('pause');}
 function resume(){state='playing';last=performance.now();accumulator=0;show(null);}
@@ -39,21 +41,22 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();las
 window.addEventListener('blur',pause);
 function polygon(points,fill){ctx.fillStyle=fill;ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fill();}
 function ellipse(x,y,rx,ry,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
-function project(z,lane=0){const k=7/(z+7);return {k,x:width/2+lane*width*.22*k,y:height*.30+(height*.78-height*.30)*k};}
+function project(z,lane=0){const k=10/(z+10);return {k,x:width/2+lane*width*.25*k,y:height*.22+(height*.82-height*.22)*k};}
 function draw(){
+  ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.filter='none';
   ctx.clearRect(0,0,width,height);ctx.fillStyle='#e6e2dc';ctx.fillRect(0,0,width,height);
-  const center=width/2, ground=height*.78, horizon=height*.30;
+  const center=width/2, ground=height*.82, horizon=height*.22;
 
   // A continuously scrolling football pitch, projected onto the same ground as the runner.
   const point=(z,lane)=>{const p=project(z,lane);return [p.x,p.y];};
-  polygon([point(50,-1.8),point(50,1.8),point(-3,1.8),point(-3,-1.8)],'#397b43');
+  polygon([point(50,-1.8),point(50,1.8),point(-3,1.8),point(-3,-1.8)],'#247331');
   for(let i=0;i<14;i++){
     const z=i*4-(game.distance%8)-4, near=Math.max(-3,z),far=Math.min(50,z+4);
     if(far<=near)continue;
-    polygon([point(far,-1.8),point(far,1.8),point(near,1.8),point(near,-1.8)],i%2?'#438c4d':'#4b9652');
+    polygon([point(far,-1.8),point(far,1.8),point(near,1.8),point(near,-1.8)],i%2?'#2d843b':'#349344');
   }
   // Fine grass blades stay attached to the moving surface.
-  ctx.strokeStyle='#74ac65';ctx.lineWidth=.7;
+  ctx.strokeStyle='#56a34c';ctx.lineWidth=.7;
   for(let i=0;i<100;i++){
     const z=((i*7.37-game.distance)%44+44)%44-2;
     const p=project(z,((i*1.618)%3.4)-1.7);
@@ -83,14 +86,14 @@ function drawPerson(x,ground){
   ellipse(x,ground+5*s,(24-game.y*4)*s,7*s,'#285b35');
   ctx.save();ctx.translate(x,y);ctx.scale(s,s);
   const bob=jumping?0:Math.abs(Math.sin(cycle))*2;ctx.translate(0,-bob);
-  limb(-9,-27,29,stride,'#caa18a',10);limb(9,-27,29,-stride,'#e6bca2',10);
+  limb(-9,-27,29,stride,'#cb8d68',10);limb(9,-27,29,-stride,'#efb48d',10);
   // A tiny, deliberately serious runner in white underpants.
-  polygon([[-17,-65],[17,-65],[14,-30],[-14,-30]],'#ddae94');
-  polygon([[0,-65],[17,-65],[14,-30],[0,-30]],'#c69681');
-  limb(-18,-60,25,jumping?.95:-stride*.8,'#caa18a',8);limb(18,-60,25,jumping?-.95:stride*.8,'#e6bca2',8);
+  polygon([[-17,-65],[17,-65],[14,-30],[-14,-30]],'#e6a27b');
+  polygon([[0,-65],[17,-65],[14,-30],[0,-30]],'#c88762');
+  limb(-18,-60,25,jumping?.95:-stride*.8,'#cb8d68',8);limb(18,-60,25,jumping?-.95:stride*.8,'#efb48d',8);
   polygon([[-15,-38],[15,-38],[13,-22],[2,-25],[0,-30],[-3,-25],[-13,-22]],'#e6e2dc');
   ctx.fillStyle='#fff';ctx.fillRect(-15,-38,30,4);
-  ellipse(0,-78,15,18,'#e6bca2');ellipse(5,-78,10,17,'#d3a68f');
+  ellipse(0,-78,15,18,'#efb48d');ellipse(5,-78,10,17,'#d69570');
   ctx.fillStyle='#382b25';ctx.beginPath();ctx.arc(0,-83,15,Math.PI,0);ctx.fill();
   ctx.strokeStyle='#80634f';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-3,-89);ctx.lineTo(-4,-76);ctx.stroke();
   ctx.restore();
