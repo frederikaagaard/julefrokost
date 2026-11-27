@@ -1,4 +1,4 @@
-.site-navigation{position:fixed;inset:0;pointer-events:none;z-index:1000;font-family:Arial,sans-serif;color:#323232}
+.site-navigation{position:absolute;top:0;left:0;right:0;height:0;pointer-events:none;z-index:1000;font-family:Arial,sans-serif;color:#323232}
 .site-menu-toggle{all:unset;box-sizing:border-box;position:absolute;top:max(14px,env(safe-area-inset-top));right:max(14px,calc((100vw - 560px)/2 + 14px));width:40px;height:40px;border-radius:50%;background:#e6e2dc;color:#323232;display:grid;place-items:center;pointer-events:auto;touch-action:manipulation;cursor:pointer}
 body.dark .site-menu-toggle{background:#03070a;color:#fff}
 body:has(#game[data-screen="intro"]) .site-menu-toggle{background:#7e3331;color:#fff}
