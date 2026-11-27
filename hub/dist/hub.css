@@ -3,12 +3,12 @@
 .hub{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:8px;height:100svh;min-height:540px;padding:98px 8px 28px;overflow:hidden}
 .hub-logo{position:absolute;left:50%;top:39px;transform:translateX(-50%);z-index:2;pointer-events:none}
 .entry{position:relative;min-height:0;overflow:hidden;text-decoration:none;color:#fff;touch-action:manipulation;outline-offset:-5px;display:grid;place-items:center}
-.butterfly{background:#03070a}.temptation{background:#7e3331}
+.butterfly{background:#03070a}.temptation{background:#7e3331;container-type:size}
 .butterfly-art{position:absolute;left:-3.2%;top:-29.14%;width:106.4%;height:158.6%;object-fit:cover;object-position:center}
 .entry-title{position:relative;z-index:1;text-align:center;font-size:clamp(28px,10.21vw,44px);letter-spacing:-.817px;line-height:1.15;transition:translate .25s ease}
-.ring{position:absolute;top:12%;left:14%;width:72%;height:76%}
+.ring{--size:min(72cqw,calc(100cqh - 64px));position:absolute;top:50%;left:50%;width:var(--size);height:var(--size);transform:translate(-50%,-50%)}
 .orbit{display:block;position:absolute;inset:0;animation:orbit 32s linear infinite}
-.orbit>span{position:absolute;top:calc(50% - cos(var(--angle))*48%);left:calc(50% + sin(var(--angle))*50%);width:44px;height:48px;transform:translate(-50%,-50%)}
+.orbit>span{position:absolute;top:50%;left:50%;width:44px;height:48px;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(calc(var(--size)*-.5)) rotate(calc(var(--angle)*-1))}
 .orbit i{display:block;font:40px/48px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;animation:counter-orbit 32s linear infinite;text-align:center;font-style:normal}
 @keyframes orbit{to{transform:rotate(360deg)}}@keyframes counter-orbit{to{transform:rotate(-360deg)}}
 .entry:active .entry-title{translate:0 3px}
