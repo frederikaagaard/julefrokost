@@ -37,7 +37,6 @@ window.addEventListener('keydown',event=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();last=performance.now();accumulator=0;});
 window.addEventListener('blur',pause);
-document.addEventListener('site-menu-open',pause);
 function polygon(points,fill){ctx.fillStyle=fill;ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fill();}
 function ellipse(x,y,rx,ry,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
 function project(z,lane=0){const k=7/(z+7);return {k,x:width/2+lane*width*.22*k,y:height*.30+(height*.78-height*.30)*k};}
