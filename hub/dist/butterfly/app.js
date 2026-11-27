@@ -36,7 +36,7 @@ function home() {
   const art = image(data.homeImage, '', true); art.className = 'home-art';
   const logo = brand(data.homeLogo); logo.classList.add('home-brand');
   const start = el('a', 'pill start', 'Start spillet'); start.href = '#/spillere';
-  const title = el('h1', 'home-title', 'Butterfly effekt');
+  const title = el('h1', 'home-title', 'Butterfly Effect');
   page.append(art, logo, title, start); return page;
 }
 function players() {
@@ -91,7 +91,7 @@ function render() {
   else if (path[0] === 'former' && p) page = generating(p);
   else if (path[0] === 'profil' && p) page = profile(p);
   else page = home();
-  document.title = path[0] === 'profil' && p ? `${p.name} — Game of Fate` : 'Butterfly effekt — Game of Fate';
+  document.title = path[0] === 'profil' && p ? `${p.name} — Game of Fate` : 'Butterfly Effect — Game of Fate';
   const version = renderVersion;
   const commit = () => {
     if (version !== renderVersion) return;

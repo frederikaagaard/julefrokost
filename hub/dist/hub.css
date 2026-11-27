@@ -1,15 +1,15 @@
-:root{font-family:'Times New Roman',serif;background:#03070a;color:#fff;color-scheme:dark;-webkit-tap-highlight-color:transparent}
+:root{font-family:'Times New Roman',serif;background:#e6e2dc;color:#fff;color-scheme:light;-webkit-tap-highlight-color:transparent}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;width:100%}
-.hub{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;height:100svh;overflow:hidden}
-.hub-logo{position:absolute;left:50%;top:max(39px,env(safe-area-inset-top));transform:translateX(-50%);z-index:2;pointer-events:none}
-.entry{position:relative;min-height:0;overflow:hidden;text-decoration:none;color:#fff;touch-action:manipulation;outline-offset:-5px}
+.hub{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:8px;height:100svh;min-height:540px;padding:98px 8px 28px;overflow:hidden}
+.hub-logo{position:absolute;left:50%;top:39px;transform:translateX(-50%);z-index:2;pointer-events:none}
+.entry{position:relative;min-height:0;overflow:hidden;text-decoration:none;color:#fff;touch-action:manipulation;outline-offset:-5px;display:grid;place-items:center}
 .butterfly{background:#03070a}.temptation{background:#7e3331}
-.butterfly-art{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:center;-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 78%,transparent)}
-.entry-title{position:absolute;left:0;right:0;top:auto;bottom:8%;text-align:center;font-size:clamp(24px,6vw,44px);letter-spacing:-.6px;line-height:1.2;transition:translate .25s ease}
-.ring{--size:min(44vw,200px,27svh);position:absolute;top:43%;left:50%;width:var(--size);height:var(--size);transform:translate(-50%,-50%)}
+.butterfly-art{position:absolute;left:-3.2%;top:-29.14%;width:106.4%;height:158.6%;object-fit:cover;object-position:center}
+.entry-title{position:relative;z-index:1;text-align:center;font-size:clamp(28px,10.21vw,44px);letter-spacing:-.817px;line-height:1.15;transition:translate .25s ease}
+.ring{position:absolute;top:12%;left:14%;width:72%;height:76%}
 .orbit{display:block;position:absolute;inset:0;animation:orbit 32s linear infinite}
-.orbit>span{position:absolute;top:50%;left:50%;width:36px;height:36px;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(calc(var(--size)*-.5)) rotate(calc(var(--angle)*-1))}
-.orbit i{display:block;font:clamp(25px,5vw,36px)/36px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;animation:counter-orbit 32s linear infinite;text-align:center}
+.orbit>span{position:absolute;top:calc(50% - cos(var(--angle))*48%);left:calc(50% + sin(var(--angle))*50%);width:44px;height:48px;transform:translate(-50%,-50%)}
+.orbit i{display:block;font:40px/48px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;animation:counter-orbit 32s linear infinite;text-align:center;font-style:normal}
 @keyframes orbit{to{transform:rotate(360deg)}}@keyframes counter-orbit{to{transform:rotate(-360deg)}}
 .entry:active .entry-title{translate:0 3px}
 @media(prefers-reduced-motion:reduce){.orbit,.orbit i{animation:none}.entry-title{transition:none}}
